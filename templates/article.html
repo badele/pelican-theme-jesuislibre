@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title|striptags }}{% endblock %}
+{% block content %}
+
+<h1>{{ article.title }}</h1>
+<div class=date>{{ article.locale_date }}
+{% if article.tags %}
+ / <span class="tags">
+  {% for tag in article.tags %}
+  <a class="tag" href="{{ SITEURL }}/{{ tag.url }}">{{ tag|e }}</a>
+  {% endfor %}
+</span>
+{% endif %}
+</div>
+
+{{ article.content }}
+{% include 'disqus.html' %}
+
+
+<div class="author">
+  <a href="http://bruno.adele.im">
+    <img src="http://bruno.adele.im/static/bruno.jpg" alt="Bruno Adelé" width="128" height="108"/>
+  </a>
+  <div class="infos">
+    <h3>A propos de <a href="http://bruno.adele.im">Bruno Adelé</a></h3>	
+    <p>Bruno Adelé, 40 ans avec 20 ans d'expérience dans le développement et dans le réseau (y compris internet). Passionné d'informatique depuis son plus jeune âge, a un faible pour les logiciels libres. En recherche d'opportunité dans la région de Montpellier pour exercer sa passion, de préférence dans la R&amp;D</p>
+  </div>
+</div>
+
+{% endblock %}

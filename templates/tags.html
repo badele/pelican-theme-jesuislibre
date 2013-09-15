@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tags</h1>
+<ul class=tagcloud>
+  {% for tag in tag_cloud|sort %}
+  <li><a href="{{ SITEURL }}/{{ tag.0.url }}">{{ tag.0|e }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
