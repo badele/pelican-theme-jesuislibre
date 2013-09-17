@@ -14,17 +14,8 @@
 </div>
 
 {{ article.content }}
+{% include 'author.html' %}
 {% include 'disqus.html' %}
 
-
-<div class="author">
-  <a href="http://bruno.adele.im">
-    <img src="http://bruno.adele.im/static/bruno.jpg" alt="Bruno Adelé" width="128" height="108"/>
-  </a>
-  <div class="infos">
-    <h3>A propos de <a href="http://bruno.adele.im">Bruno Adelé</a></h3>	
-    <p>Bruno Adelé, 40 ans avec 20 ans d'expérience dans le développement et dans le réseau (y compris internet). Passionné d'informatique depuis son plus jeune âge, a un faible pour les logiciels libres. En recherche d'opportunité dans la région de Montpellier pour exercer sa passion, de préférence dans la R&amp;D</p>
-  </div>
-</div>
 
 {% endblock %}
