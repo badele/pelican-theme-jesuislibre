@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # use:
-# generate_pelicanconf-sample.py my_official_blog/pelicanconf.py
+# generate_pelicanconf-sample.py my_official_blog/pelicanconf.py | sort > pelicanconf-sample.py 
 
 import sys
 import imp
