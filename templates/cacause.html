@@ -1,0 +1,71 @@
+{% if CACAUSE_SITENAME %}
+<div>
+    <a class="pure-button pure-button-primary" href="javascript:showHide('comment-form');">Commenter</a>
+</div>
+
+<div id="comment-form" style="display:none">
+	<form class="pure-form pure-form-aligned" role="form" action="{{ CACAUSE_ENGINE_URL }}/api/add" method="post">
+      <input type="hidden" value="{{ CACAUSE_SITENAME }}" name="cc_sitename"/>
+      <input type="hidden" value="{{ article.slug }}" name="cc_url" />
+      <input type="hidden" value="{{ article.cacause_article }}" name="cc_pageid"/>
+	    <fieldset>
+		<div class="pure-control-group" >
+		    <label for="author">Nom</label>
+		    <input class="pure-u-1-4" id="author" name="cc_author" type="text" placeholder="Nom ou Surnom (obligatoire)" required></input>
+		</div>
+
+		<div class="pure-control-group">
+		    <label for="email">Email</label>
+		    <input class="pure-u-1-4" id="email" name="cc_author_email" type="email" placeholder="Email (optionnel)"></input>
+		</div>
+
+		<div class="pure-control-group">
+		    <label for="site">Site Web</label>
+		    <input class="pure-u-1-4" id="site" name="cc_author_website" type="text" placeholder="Site Web (optionnel)"></input>
+		</div>
+
+		<div class="pure-control-group">
+		    <label for="cc_rawcomment">Commentaire</label>
+		    <textarea class="pure-u-1-4" id="message" name="cc_rawcomment" rows="3" placeholder="Votre commentaire ..." required></textarea>
+		</div>
+
+		<div class="pure-controls">
+		    <button type="submit" class="pure-button pure-button-primary">Envoyer</button>
+		</div>
+	    </fieldset>
+	</form>
+</div>
+
+{% if article.cacause_comment %}
+    {% for comment in article.cacause_comment %}
+        <hr>
+	<div class="inline">
+        {% if comment.site %}
+        <a href="{{ comment.site }}">
+        {% endif %}
+        {% if CACAUSE_GRAVATAR and comment.gravatar %}
+        <img src="{{ comment.gravatar }}" height="32" width="32" style="float:left; margin-right:10px"/>
+        {% endif %}
+        {% if comment.site %}
+        </a>
+        {% endif %}
+        <span class="title">{{ comment.author }}</span>
+	<span> - </span>
+	<span>{{ comment.date }}</span>
+	</div>
+        {{ comment.body }}
+    {% endfor %}
+{% endif %}
+
+<script type="text/javascript"><!--
+
+function showHide(elementid){
+    if (document.getElementById(elementid).style.display == 'none'){
+        document.getElementById(elementid).style.display = '';
+    } else {
+        document.getElementById(elementid).style.display = 'none';
+    }
+}
+--></script>
+{% endif %}
+
