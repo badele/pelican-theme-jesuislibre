@@ -36,7 +36,10 @@
     </head>
     <body>
         <div id="wrapper">
-          <div id="blogtitle">{{ SITENAME }}{% if SITESUBTITLE %}<div id="subtitle">{{ SITESUBTITLE }}</div>{% endif %}</div>
+          <div id="blogtitle">
+            <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+            {% if SITESUBTITLE %}<div id="subtitle">{{ SITESUBTITLE }}</div>{% endif %}
+         </div>
 
           <!-- Blogroll -->
           <ul id="mainnav">
